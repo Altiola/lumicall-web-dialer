@@ -15,6 +15,12 @@
   <servlet>
     <servlet-name>dialservlet</servlet-name>
     <servlet-class>main.DialServlet</servlet-class>
+    
+    <init-param>
+        <param-name>sipDomain</param-name>
+        <param-value>webrtc.lumicall.org</param-value>
+        </init-param>
+        
   </servlet>
   <servlet-mapping>
     <servlet-name>dialservlet</servlet-name>
