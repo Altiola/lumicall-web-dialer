@@ -36,9 +36,9 @@ public class DialServlet extends HttpServlet {
 	
 	String sipDomain;
 	
-	public void init(ServletConfig servletConfig) throws ServletException{
+	public void init() throws ServletException{
 		
-		this.sipDomain = servletConfig.getInitParameter("sipDomain");
+		this.sipDomain = getInitParameter("sipDomain");
 	}
 	
 	
