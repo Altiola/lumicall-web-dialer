@@ -21,6 +21,11 @@
         <param-value>webrtc.lumicall.org</param-value>
         </init-param>
         
+    <init-param>
+        <param-name>webURL</param-name>
+        <param-value>https://freephonebox.net/?dial=</param-value>
+        </init-param>
+        
   </servlet>
   <servlet-mapping>
     <servlet-name>dialservlet</servlet-name>

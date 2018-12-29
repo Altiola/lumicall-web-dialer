@@ -34,16 +34,16 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/dialservlet")
 public class DialServlet extends HttpServlet {
 	
+	private static final long serialVersionUID = 1L;
 	String sipDomain;
+	String webURL;
 	
 	public void init() throws ServletException{
 		
 		this.sipDomain = getInitParameter("sipDomain");
-	}
-	
-	
-	private static final long serialVersionUID = 1L;
-       
+		this.webURL = getInitParameter("webURL");
+		
+	}      
     public DialServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -53,7 +53,7 @@ public class DialServlet extends HttpServlet {
     	// return "http://webrtc.lumicall.org/?dial=" + number;
     	String sipUri = number + "@" + sipDomain;
     	String sipUriEncoded = URLEncoder.encode(sipUri, "UTF-8");
-    	return "https://freephonebox.net/?dial=" + sipUriEncoded + "&video=false";
+    	return webURL + sipUriEncoded + "&video=false";
     }
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
