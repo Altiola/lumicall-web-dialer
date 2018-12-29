@@ -28,24 +28,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 /**
  * Servlet implementation class DialServlet
  */
 @WebServlet("/dialservlet")
 public class DialServlet extends HttpServlet {
 	
+	static final Logger logger = LoggerFactory.getLogger(DialServlet.class);
+	
 	private static final long serialVersionUID = 1L;
 	String sipDomain;
 	String webURL;
 	
+	
 	public void init() throws ServletException{
 		
 		this.sipDomain = getInitParameter("sipDomain");
+		logger.debug("SIP Domain: {}", sipDomain);
+		
 		this.webURL = getInitParameter("webURL");
+		logger.debug("Web URL: {} ", webURL);
 		
 	}      
     public DialServlet() {
-        super();
+    	super();   
         // TODO Auto-generated constructor stub
     }
     
@@ -58,7 +66,10 @@ public class DialServlet extends HttpServlet {
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String number = request.getParameter("fullNumber");
+		logger.debug("User requested to dial: {} ", number);
+		
 		response.sendRedirect(makeUrl(number));
+		
 	}
 
 }
